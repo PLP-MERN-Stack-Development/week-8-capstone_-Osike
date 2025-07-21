@@ -1,0 +1,18 @@
+{
+  "title": "Zungumza na SheriaBot",
+  "subtitle": "Uliza kuhusu haki zako za kisheria, vifungu vya Katiba, au taratibu za kisheria nchini Kenya.",
+  "placeholder": "Uliza kuhusu haki zako za kisheria, vifungu vya Katiba, au taratibu za kisheria...",
+  "send": "Tuma",
+  "thinking": "SheriaBot anafikiria...",
+  "welcomeMessage": "Hujambo! Mimi ni SheriaBot, msaidizi wako wa kisheria kwa Kenya. Ninaweza kukusaidia kuelewa haki zako, kupitia taratibu za kisheria, na kupata taarifa muhimu kutoka Katiba. Ninawezaje kukusaidia leo?",
+  "errorMessage": "Samahani, nina shida katika kuchakata ombi lako sasa hivi. Tafadhali jaribu tena baadaye.",
+  "suggestions": {
+    "title": "Maswali Yaliyopendekezwa",
+    "items": [
+      "Haki zangu za kikatibu ni zipi?",
+      "Ninawezaje kupata msaada wa kisheria Mombasa?",
+      "Nifanye nini ikiwa nitakamatwa?",
+      "Ninawezaje kuwasilisha kesi katika Mahakama ya Madai Madogo?"
+    ]
+  }
+}

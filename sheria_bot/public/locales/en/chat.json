@@ -1,0 +1,18 @@
+{
+  "title": "Chat with SheriaBot",
+  "subtitle": "Ask about your legal rights, Constitution articles, or legal procedures in Kenya.",
+  "placeholder": "Ask about your legal rights, Constitution articles, or legal procedures...",
+  "send": "Send",
+  "thinking": "SheriaBot is thinking...",
+  "welcomeMessage": "Hello! I'm SheriaBot, your legal assistant for Kenya. I can help you understand your rights, navigate legal procedures, and find relevant information from the Constitution. How can I assist you today?",
+  "errorMessage": "I'm sorry, I'm having trouble processing your request right now. Please try again later.",
+  "suggestions": {
+    "title": "Suggested Questions",
+    "items": [
+      "What are my constitutional rights?",
+      "How do I access legal aid in Mombasa?",
+      "What should I do if arrested?",
+      "How do I file a case in Small Claims Court?"
+    ]
+  }
+}
