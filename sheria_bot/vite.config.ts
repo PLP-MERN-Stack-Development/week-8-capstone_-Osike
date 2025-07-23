@@ -31,6 +31,9 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
+  preview: {
+    allowedHosts: ['week-8-capstone-osike.onrender.com'], // Add your allowed host here
+  },
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
