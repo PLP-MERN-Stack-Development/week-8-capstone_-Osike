@@ -16,7 +16,7 @@ const HomePage = () => {
           style={{ filter: 'brightness(0.3)' }}
         >
           <source
-            src="src/assets/video.mp4"
+            src="./video.mp4"
             type="video/mp4"
           />
           {/* Fallback image */}

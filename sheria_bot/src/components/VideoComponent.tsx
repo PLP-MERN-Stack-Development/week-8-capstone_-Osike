@@ -1,5 +1,5 @@
 import React from "react";  
-import myVideo from "../assets/video.mp4";
+import myVideo from "public/video.mp4"; // did this for deployment issues 
 
 
 function VideoComponent() {
