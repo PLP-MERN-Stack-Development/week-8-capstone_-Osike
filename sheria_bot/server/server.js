@@ -6,6 +6,12 @@ import morgan from 'morgan';
 import compression from 'compression';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Get directory name in ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Import production middleware
 import { securityMiddleware } from './middleware/security.js';
@@ -37,6 +43,7 @@ securityMiddleware(app);
 loggingMiddleware(app);
 
 // CORS configuration
+// 🔧 CHANGE NEEDED: Update CLIENT_URL to match your frontend domain in production
 app.use(cors({
   origin: process.env.CLIENT_URL || 'http://localhost:3000',
   credentials: true,
@@ -64,8 +71,15 @@ app.use('/api/faqs', faqRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/lawfirms', partnerLawFirmRoutes);
 
-// Root endpoint
-app.get('/', (req, res) => {
+// 🔧 CHANGE NEEDED: Update this path to match your React build output directory
+// Common paths: '../dist', '../build', '../client/dist', '../frontend/dist'
+const distPath = path.resolve(__dirname, '../dist');
+
+// Serve static files from the React app build directory
+app.use(express.static(distPath));
+
+// API Root endpoint
+app.get('/api', (req, res) => {
   res.json({
     message: 'Welcome to SheriaBot API',
     description: 'Legal Chatbot for Enhanced Access to Justice in Kenya',
@@ -82,13 +96,33 @@ app.get('/', (req, res) => {
   });
 });
 
+// All other GET requests not handled before will return the React app
+// This enables React Router to work properly in production
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(distPath, 'index.html'));
+});
+
 // Error handling middleware
-app.use(notFound);
 app.use(errorHandler);
+
+// Import in-memory database for development/testing
+// 🔧 CHANGE NEEDED: Create this file if it doesn't exist
+// Create: ./config/testDb.js with MongoDB Memory Server setup
+import { connectTestDB } from './config/testDb.js';
 
 // Database connection
 const connectDB = async () => {
   try {
+    // Use in-memory database if MONGODB_URI is not provided or in development mode
+    if (!process.env.MONGODB_URI || process.env.NODE_ENV === 'development') {
+      const uri = await connectTestDB();
+      logger.info(`Using in-memory MongoDB for testing: ${uri}`);
+      return;
+    }
+    
+    // Connect to real MongoDB instance
+    // 🔧 ENVIRONMENT VARIABLE NEEDED: Set MONGODB_URI in your .env file
+    // Example: MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/sheriabot
     const conn = await mongoose.connect(process.env.MONGODB_URI);
     logger.info(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
@@ -106,6 +140,8 @@ const startServer = async () => {
     logger.info(`📚 Environment: ${process.env.NODE_ENV}`);
     logger.info(`🔗 Health check: http://localhost:${PORT}/health`);
     logger.info(`⚖️  SheriaBot API: http://localhost:${PORT}/api`);
+    // 🔧 CHANGE NEEDED: Update this URL to match your deployment domain
+    logger.info(`🌐 Frontend available at: https://week-8-capstone-osike-seven.vercel.app/chat`);
   });
 };
 
