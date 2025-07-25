@@ -11,7 +11,7 @@
 ## 🚀 Overview
 A full-stack real-time chat application built with the MERN stack (MongoDB, Express.js, React, Node.js) featuring instant messaging, user authentication, and real-time updates using Socket.io.
 
-**Live Demo:** [https://week-8-capstone-osike-seven.vercel.app/chat](https://week-8-capstone-osike-seven.vercel.app/chat)  
+**Live Demo:** [https://week-8-capstone-osike-seven.vercel.app/chat](https://week-8-capstone-osike-seven.vercel.app/) (https://week-8-capstone-osike-git-main-code-tribes-projects.vercel.app/)
 **GitHub Repository:** [https://github.com/PLP-MERN-Stack-Development/week-8-capstone_-Osike](https://github.com/PLP-MERN-Stack-Development/week-8-capstone_-Osike)
 
 ## ✨ Features
